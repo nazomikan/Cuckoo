@@ -1,0 +1,27 @@
+{
+  "name": "cuckoo",
+  "version": "0.0.1",
+  "description": "This is a library to the code that is easy to test the code hard to test.",
+  "keywords": [
+    "test",
+    "private",
+    "stub",
+    "mock"
+  ],
+  "author": "nazomikan <nazomikan@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nazomikan/Cuckoo"
+  },
+  "bugs": {
+    "web": "https://github.com/nazomikan/Cuckoo/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.9.0"
+  },
+  "scripts": {
+    "test": "mocha test/cuckoo-test.js --reporter spec"
+  },
+  "main": "cuckoo.js"
+}

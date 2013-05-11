@@ -3,9 +3,11 @@ Cuckoo
 
 ## Description
 This is a library to the code that is easy to test the code hard to test.
+
 Cuckooはテストしづらいコードをテストしやすくしてくれるライブラリです。
 
 It is also possible to secretly substitute to mock a module code under test calls as brood parasitism of the cuckoo.
+
 カッコーの托卵のようにテスト対象のコードが呼ぶモジュールをモックすり替えることもできます。
 
 In addition, cuckoo can change untestable code (the local function and local variables that are not exported to the outside) to testable.
@@ -67,12 +69,18 @@ target-test.js
 ## API
 ###cuckoo#load(filePath, [mocks])
 @param String `filePath`
+
 File path of the test target
+
 テスト対象のファイルパス
 
+
 @param Object `[mocks]`
+
 replace mock when the `require` is called
+
 `require`が呼ばれた時に差し替えられるモック
+
 
 @return Object
 

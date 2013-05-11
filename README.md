@@ -3,6 +3,8 @@ Cuckoo
 
 [![Build Status](https://travis-ci.org/nazomikan/Cuckoo.png?branch=master)](https://travis-ci.org/nazomikan/Cuckoo)
 
+![cuckoo](http://nazomikan.com/images/storage/cuckoo.jpg)
+
 ## Description
 This is a library to the code that is easy to test the code hard to test.
 
@@ -25,41 +27,43 @@ target.js
     var util = require('util');
 
     function untestableMethod() {
-        util.isArray([1, 2, 3]);
+      util.isArray([1, 2, 3]);
     }
 
     exports.testableMethod() {
-        return 1;
+      return 1;
     }
 
 target-test.js
 
-    var cuckoo = require('cuckoo'),
-        assert = require('assert');
+    var cuckoo = require('cuckoo')
+      , assert = require('assert');
 
     describe('#untestableMethod', function () {
-        it('should have set the array to util#isArray', function () {
-            var target,
-                expect = [1, 2, 3],
-                mock = {};
+      it('should have set the array to util#isArray', function () {
+        var target
+          , expect = [1, 2, 3]
+          , mock = {}
+          ;
 
-            mock.util = {
-                isArray: function (ary) {
-                    assert.deepEqual([1, 2, 3], ary); // pass
-                }
-            };
+        mock.util = {
+          isArray: function (ary) {
+            assert.deepEqual([1, 2, 3], ary); // pass
+          }
+        };
 
-            target = cuckoo.load('./target.js', mock),
-            target.private.untestableMethod();
-        });
+        target = cuckoo.load('./target.js', mock),
+        target.private.untestableMethod();
+      });
     });
 
     describe('#testableMethod', function () {
-        it('should get 1', function () {
-            var target = cuckoo.load('./target.js');
+      it('should get 1', function () {
+        var target = cuckoo.load('./target.js')
+          ;
 
-            assert.equal(1, target.public.testableMethod());
-        });
+        assert.equal(1, target.public.testableMethod());
+      });
     });
 
 ## API
@@ -71,10 +75,10 @@ target-test.js
 @return Object
 
     {
-        context: "Variable object under test",
-        private: "Variable object under test",
-        public: "Public methods of test",
-        module: "Module object under test"
+      context: "Variable object under test",
+      private: "Variable object under test",
+      public: "Public methods of test",
+      module: "Module object under test"
     }
 
 ## License

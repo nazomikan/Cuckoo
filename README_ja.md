@@ -2,11 +2,11 @@ Cuckoo
 =====
 
 ## Description
-This is a library to the code that is easy to test the code hard to test.
+Cuckooはテストしづらいコードをテストしやすくしてくれるライブラリです。
 
-It is also possible to secretly substitute to mock a module code under test calls as brood parasitism of the cuckoo.
+カッコーの托卵のようにテスト対象のコードが呼ぶモジュールをモックすり替えることもできます。
 
-In addition, cuckoo can change untestable code (the local function and local variables that are not exported to the outside) to testable.
+また、通常テスト困難なプライベート(exportsされていない)な変数や関数にアクセスする機構をもっているため、それらのテストが容易に行えます。 この動作はactivation objectを偽物にすり替えることで可能にしています。 まるでカッコーの托卵のように。
 
 ## Usage
 install cuckoo via npm first:
@@ -62,17 +62,17 @@ target-test.js
 
 ## API
 ###cuckoo#load(filePath, [mocks])
-@param String `filePath` File path of the test target
+@param String `filePath` テスト対象のファイルパス
 
-@param Object `[mocks]` replace mock when the `require` is called
+@param Object `[mocks]` `require`が呼ばれた時に差し替えられるモック
 
 @return Object
 
     {
-        context: "Variable object under test",
-        private: "Variable object under test",
-        public: "Public methods of test",
-        module: "Module object under test"
+        context: "テスト対象の変数オブジェクト",
+        private: "テスト対象の変数オブジェクト",
+        public: "テスト対象の公開メソッド",
+        module: "テスト対象のmoduleオブジェクト"
     }
 
 ## License

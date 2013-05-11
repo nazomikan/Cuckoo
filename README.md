@@ -1,6 +1,8 @@
 Cuckoo
 =====
 
+[![Build Status](https://travis-ci.org/nazomikan/Cuckoo.png?branch=master)](https://travis-ci.org/nazomikan/Cuckoo)
+
 ## Description
 This is a library to the code that is easy to test the code hard to test.
 

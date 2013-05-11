@@ -1,6 +1,8 @@
 Cuckoo
 =====
 
+[![Build Status](https://travis-ci.org/nazomikan/Cuckoo.png?branch=master)](https://travis-ci.org/nazomikan/Cuckoo)
+
 ## Description
 Cuckooはテストしづらいコードをテストしやすくしてくれるライブラリです。
 

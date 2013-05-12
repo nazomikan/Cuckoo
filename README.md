@@ -24,7 +24,8 @@ and then include it in your project with:
 ## Example
 target.js
 
-    var util = require('util');
+    var util = require('util')
+      ;
 
     function untestableMethod() {
       util.isArray([1, 2, 3]);
@@ -37,12 +38,12 @@ target.js
 target-test.js
 
     var cuckoo = require('cuckoo')
-      , assert = require('assert');
+      , assert = require('assert')
+      ;
 
     describe('#untestableMethod', function () {
       it('should have set the array to util#isArray', function () {
         var target
-          , expect = [1, 2, 3]
           , mock = {}
           ;
 
@@ -52,7 +53,7 @@ target-test.js
           }
         };
 
-        target = cuckoo.load('./target.js', mock),
+        target = cuckoo.load('./target.js', mock);
         target.private.untestableMethod();
       });
     });

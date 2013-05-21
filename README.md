@@ -31,9 +31,9 @@ target.js
       util.isArray([1, 2, 3]);
     }
 
-    exports.testableMethod() {
+    exports.testableMethod = function () {
       return 1;
-    }
+    };
 
 target-test.js
 

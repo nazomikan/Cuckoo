@@ -6,11 +6,10 @@ var assert = require('assert')
 describe('cuckoo', function () {
   describe('__dirname', function () {
     it('should get correct dirname', function () {
-      var target = cuckoo.load('./target.js')
+      var target = cuckoo.load(path.resolve(__dirname, './target.js'))
         , expect = path.resolve(__dirname)
         , actual
         ;
-
       actual = target.private.getDirname();
       assert.equal(actual, expect);
     });
@@ -18,7 +17,7 @@ describe('cuckoo', function () {
 
   describe('__filename', function () {
     it('should get correct filename', function () {
-      var target = cuckoo.load('./target.js')
+      var target = cuckoo.load(path.resolve(__dirname, './target.js'))
         , expect = path.resolve(__dirname, './target.js')
         , actual
         ;
@@ -30,7 +29,7 @@ describe('cuckoo', function () {
 
   describe('exports', function () {
     it('should be able to access to public method', function () {
-      var target = cuckoo.load('./target.js')
+      var target = cuckoo.load(path.resolve(__dirname, './target.js'))
         , expect = "a"
         , actual
         ;
@@ -42,7 +41,7 @@ describe('cuckoo', function () {
 
   describe('module', function () {
     it('should be able to access to public method', function () {
-      var target = cuckoo.load('./target.js')
+      var target = cuckoo.load(path.resolve(__dirname, './target.js'))
         , expect = "b"
         , actual
         ;
@@ -53,7 +52,7 @@ describe('cuckoo', function () {
 
     describe('when access to module.parent', function () {
       it('should get this module', function () {
-        var target = cuckoo.load('./target.js')
+        var target = cuckoo.load(path.resolve(__dirname, './target.js'))
           , actual
           ;
 
@@ -64,7 +63,7 @@ describe('cuckoo', function () {
 
     describe('when access to module.children', function () {
       it('should get child modules', function () {
-        var target = cuckoo.load('./target.js')
+        var target = cuckoo.load(path.resolve(__dirname, './target.js'))
           , children = target.public.getChild()
           , child1Path = path.resolve(__dirname, './child1.js')
           , child2Path = path.resolve(__dirname, './child2.js')
@@ -81,7 +80,7 @@ describe('cuckoo', function () {
 
   describe('global properties', function () {
     it('should have some global properties', function () {
-      var context = cuckoo.load('./target.js').context
+      var context = cuckoo.load(path.resolve(__dirname, './target.js')).context
         ;
 
       assert.ok(context.hasOwnProperty('setTimeout'));
@@ -104,7 +103,7 @@ describe('cuckoo', function () {
               }
             }
           }
-          , target = cuckoo.load('./target.js', mock)
+          , target = cuckoo.load(path.resolve(__dirname, './target.js'), mock)
           ;
 
         target.public.useIsArray();

@@ -1,6 +1,6 @@
 {
   "name": "cuckoo",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This is a library to the code that is easy to test the code hard to test.",
   "keywords": [
     "test",

@@ -37,6 +37,7 @@ target-test.js
 
     var cuckoo = require('cuckoo')
       , assert = require('assert')
+      , path = require('path')
       ;
 
     describe('#untestableMethod', function () {
@@ -51,14 +52,14 @@ target-test.js
           }
         };
 
-        target = cuckoo.load('./target.js', mock);
+        target = cuckoo.load(path.resolve(__dirname, './target.js'), mock);
         target.private.untestableMethod();
       });
     });
 
     describe('#testableMethod', function () {
       it('should get 1', function () {
-        var target = cuckoo.load('./target.js')
+        var target = cuckoo.load(path.resolve(__dirname, './target.js'))
           ;
 
         assert.equal(1, target.public.testableMethod());
@@ -67,7 +68,7 @@ target-test.js
 
 ## API
 ###cuckoo#load(filePath, [mocks])
-@param String `filePath` テスト対象のファイルパス
+@param String `filePath` テスト対象のファイルパス(absolute)
 
 @param Object `[mocks]` `require`が呼ばれた時に差し替えられるモック
 

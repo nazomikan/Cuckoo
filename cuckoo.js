@@ -11,8 +11,7 @@ var path = require('path');
  * @param {Object=} mocks Hash of mocked dependencies
  */
 exports.load = function(filePath, mocks) {
-  var parentFilename = module.parent.filename
-    , targetFilePath = path.resolve(path.dirname(parentFilename), filePath)
+  var targetFilePath = filePath
     , targetFileDir = path.dirname(targetFilePath)
     , context = {}
     , exports
@@ -27,7 +26,7 @@ exports.load = function(filePath, mocks) {
   // i.e. requiring ./some inside file /a/b.js needs to be resolved to /a/some
   resolveModule = function(module) {
     if (module.charAt(0) !== '.') return module;
-    return path.resolve(path.dirname(targetFilePath), module);
+    return path.resolve(targetFileDir, module);
   };
 
   exports = {};

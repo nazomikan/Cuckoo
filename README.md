@@ -39,12 +39,14 @@ target-test.js
 
     var cuckoo = require('cuckoo')
       , assert = require('assert')
+      , path = require('path')
       ;
 
     describe('#untestableMethod', function () {
       it('should have set the array to util#isArray', function () {
         var target
           , mock = {}
+          , filePath = path.resolve(__dirname, './target.js'); //filePath must be absolute
           ;
 
         mock.util = {
@@ -53,14 +55,15 @@ target-test.js
           }
         };
 
-        target = cuckoo.load('./target.js', mock);
+        target = cuckoo.load(filePath, mock);
         target.private.untestableMethod();
       });
     });
 
     describe('#testableMethod', function () {
       it('should get 1', function () {
-        var target = cuckoo.load('./target.js')
+        var filePath = path.resolve(__dirname, './target.js');
+          , target = cuckoo.load(filePath)
           ;
 
         assert.equal(1, target.public.testableMethod());
@@ -69,7 +72,7 @@ target-test.js
 
 ## API
 ###cuckoo#load(filePath, [mocks])
-@param String `filePath` File path of the test target
+@param String `filePath` File path of the test target (must be absolute)
 
 @param Object `[mocks]` replace mock when the `require` is called
 
